@@ -1,0 +1,157 @@
+-- phpMyAdmin SQL Dump
+-- version 4.8.4
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1:3306
+-- Generation Time: Nov 17, 2019 at 03:34 PM
+-- Server version: 5.7.24
+-- PHP Version: 7.3.1
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `api_db`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `action`
+--
+
+DROP TABLE IF EXISTS `action`;
+CREATE TABLE IF NOT EXISTS `action` (
+  `id_action` int(11) NOT NULL AUTO_INCREMENT,
+  `vend` tinyint(1) NOT NULL,
+  `numero_utilisateur` int(11) NOT NULL,
+  `numero_article` int(11) NOT NULL,
+  PRIMARY KEY (`id_action`),
+  KEY `numero_utilisateur` (`numero_utilisateur`),
+  KEY `numero_article` (`numero_article`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `action`
+--
+
+INSERT INTO `action` (`id_action`, `vend`, `numero_utilisateur`, `numero_article`) VALUES
+(1, 1, 1, 2),
+(2, 0, 1, 1),
+(3, 1, 2, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `article`
+--
+
+DROP TABLE IF EXISTS `article`;
+CREATE TABLE IF NOT EXISTS `article` (
+  `id_article` int(11) NOT NULL AUTO_INCREMENT,
+  `nom_article` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `vendu` tinyint(1) NOT NULL DEFAULT '0',
+  `date_de_publication` datetime NOT NULL,
+  `date_vendu` datetime DEFAULT NULL,
+  `commentaire_acheteur` enum('catastrophique','mauvais','assez_bien','bien','tres_bien','excellent') COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id_article`)
+) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `article`
+--
+
+INSERT INTO `article` (`id_article`, `nom_article`, `vendu`, `date_de_publication`, `date_vendu`, `commentaire_acheteur`) VALUES
+(1, 'manette_gamer', 1, '2019-09-27 10:00:00', '2019-09-29 12:00:00', 'bien'),
+(2, 'minecraft__item', 0, '2019-10-27 10:00:00', NULL, NULL),
+(14, 'The best pillow for amazing programmers.', 2, '2018-08-01 00:35:07', NULL, NULL),
+(15, 'The best pillow for amazing programmers.', 2, '2018-08-01 00:35:07', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `chat`
+--
+
+DROP TABLE IF EXISTS `chat`;
+CREATE TABLE IF NOT EXISTS `chat` (
+  `id_chat` int(11) NOT NULL AUTO_INCREMENT,
+  `description_chat` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `article_concerne` int(11) NOT NULL,
+  `num_utilisateur` int(11) NOT NULL,
+  PRIMARY KEY (`id_chat`),
+  KEY `article_concerne` (`article_concerne`),
+  KEY `num_utilisateur` (`num_utilisateur`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `chat`
+--
+
+INSERT INTO `chat` (`id_chat`, `description_chat`, `article_concerne`, `num_utilisateur`) VALUES
+(1, 'best of this minecraft', 2, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `enchere`
+--
+
+DROP TABLE IF EXISTS `enchere`;
+CREATE TABLE IF NOT EXISTS `enchere` (
+  `id_enchere` int(11) NOT NULL AUTO_INCREMENT,
+  `id_parleur` int(11) NOT NULL,
+  `phrase` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `numero_chat` int(11) NOT NULL,
+  `date_envoie` datetime NOT NULL,
+  PRIMARY KEY (`id_enchere`),
+  KEY `id_parleur` (`id_parleur`),
+  KEY `numero_chat` (`numero_chat`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `enchere`
+--
+
+INSERT INTO `enchere` (`id_enchere`, `id_parleur`, `phrase`, `numero_chat`, `date_envoie`) VALUES
+(1, 1, 'salut', 1, '2019-10-27 10:10:00'),
+(2, 2, 'bonne fructueuse semaine', 1, '2019-10-27 10:16:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `utilisateur`
+--
+
+DROP TABLE IF EXISTS `utilisateur`;
+CREATE TABLE IF NOT EXISTS `utilisateur` (
+  `id_utilisateur` int(11) NOT NULL AUTO_INCREMENT,
+  `nom_utilisateur` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `pseudo` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `mot_de_passe` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id_utilisateur`)
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Voici la table des utilisateurs';
+
+--
+-- Dumping data for table `utilisateur`
+--
+
+INSERT INTO `utilisateur` (`id_utilisateur`, `nom_utilisateur`, `pseudo`, `mot_de_passe`) VALUES
+(1, 'kanty', 'kokokanti28', 'connoisseur'),
+(2, 'mike', 'mirguy', 'epsi'),
+(3, 'yassine', 'hebboul', 'marrakech'),
+(4, 'wassim', 'el fdil', 'ramenez_la_fille_a_la_maison'),
+(5, 'dimitri', 'mouton', 'dota');
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
