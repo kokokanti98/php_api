@@ -1,2 +1,2 @@
 # php_api
-PHP API
+A GBS API in PHP
