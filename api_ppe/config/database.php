@@ -5,7 +5,7 @@ class Database{
     private $host = "localhost";
     private $db_name = "gsb_frais";
     private $username = "root";
-    private $password = "";
+    private $password = "admin";
     public $conn;
  
     // get the database connection
