@@ -1,7 +1,7 @@
 # php_api
 A GBS API in PHP
 <h3>Lien pour Documentation</h3>
-<a href="link">Documentation</a>
+<a href="https://drive.google.com/file/d/1xz4RBgo3l_J6yD9rrfd0V6FW05zBVJK6/view?usp=sharing">Documentation</a>
 <h3></h3>
 <h3>Lien pour fichier e4 api</h3>
 <a href="https://drive.google.com/file/d/1P4JVTqVEMghOpX9IaGicCVDo9ZRllOC-/view?usp=sharing">Fichier E4</a>
