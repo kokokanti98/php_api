@@ -4,8 +4,8 @@ class Database{
     // specify your own database credentials
     private $host = "localhost";
     private $db_name = "gsb_frais";
-    private $username = "root";
-    private $password = "admin";
+    private $username = "api_user";
+    private $password = "Admin@123";
     public $conn;
  
     // get the database connection
