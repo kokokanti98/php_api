@@ -1,5 +1,5 @@
 # php_api
-A GBS API in PHP
+A GSB API in PHP
 <h3>Lien pour Documentation</h3>
 <a href="https://drive.google.com/file/d/1xz4RBgo3l_J6yD9rrfd0V6FW05zBVJK6/view?usp=sharing">Documentation</a>
 <h3></h3>
