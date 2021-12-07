@@ -5,6 +5,7 @@
 #### Importer ce projet GitHub sur votre Serveur(moi j'ai utilisé Apache) sur Windows vous pouvez utilisez XAMP(WAMP) et sur Ubuntu vous devez installer des paquets pour l'installer.
 #### Construire cette base de données avec le nom entrer dans les configurations, avec plus de sécurité il est mieux de construire un utilisateur avec un mot de passe qui aura tout accès sur seulement la base de données créer.
 #### Maintenant on pourra tester les liens HTTP si l'API fonctionne, moi j'ai utilisé Postman. 
+### Lien fonctionnel exemple: https://apigsb.koko.best/employe/voir_employe.php // qui va chercher tous les salariés présent dans la bdd
 
 A GSB API in PHP
 <h3>Lien pour Documentation</h3>
